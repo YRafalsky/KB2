@@ -45,9 +45,9 @@ public class EntityGenerator implements CitiesOwner, ArmyShopsOwner, Serializabl
         castleNamesMask = new byte[28];
     }
 
-    public void citiesAndCastles() {
+    public void citiesAndCastles(int minCastleAuthority, int maxCastleAuthority) {
         updateNamesMask(castleNamesMask);
-        castles();
+        castles(minCastleAuthority, maxCastleAuthority);
 
         updateNamesMask(cityNamesMask);
         cities();
@@ -112,13 +112,15 @@ public class EntityGenerator implements CitiesOwner, ArmyShopsOwner, Serializabl
         }
     }
 
-    private void castles() {
+    private void castles(int minCastleAuthority, int maxCastleAuthority) {
         int count = 0;
         while (count < 5) {
             Castle castle = tryPlaceCastle(random.nextInt(Country.MAX_MAP_SIZE),
                     random.nextInt(Country.MAX_MAP_SIZE));
             if (castle != null) {
-                castle.generateArmy(1000, 0);
+                int authority = minCastleAuthority +
+                        random.nextInt(maxCastleAuthority - minCastleAuthority);
+                castle.generateArmy(authority, 0);
                 count++;
                 castles.add(castle);
             }
