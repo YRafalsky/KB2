@@ -1,8 +1,5 @@
 package by.siarhei.kb2.app.countries.generators.v1;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 import by.siarhei.kb2.app.R;
@@ -19,13 +16,9 @@ import by.siarhei.kb2.app.entities.GuidePost;
 import by.siarhei.kb2.app.entities.MapNext;
 import by.siarhei.kb2.app.entities.Metro;
 import by.siarhei.kb2.app.entities.Spell;
-import by.siarhei.kb2.app.models.Glade;
 import by.siarhei.kb2.app.models.MapPoint;
-import by.siarhei.kb2.app.models.iterators.ArmyShopsOwner;
-import by.siarhei.kb2.app.models.iterators.CitiesOwner;
-import by.siarhei.kb2.app.models.iterators.EntityIterator;
 
-public class EntityGenerator implements CitiesOwner, ArmyShopsOwner {
+public class EntityGenerator {
     private static byte[] cityNamesMask;
     private static byte[] castleNamesMask;
     private final Random random;
@@ -126,7 +119,7 @@ public class EntityGenerator implements CitiesOwner, ArmyShopsOwner {
             if (castle != null) {
                 castle.generateArmy(1000, 0);
                 count++;
-                castles.add(castle);
+                country.getCastlesVar().add(castle);
             }
         }
     }
@@ -182,7 +175,7 @@ public class EntityGenerator implements CitiesOwner, ArmyShopsOwner {
         while (run < count) {
             MapPoint mp = map[random.nextInt(65)][random.nextInt(65)];
             if (mp.getEntity() == null && mp.getLand() == R.drawable.land) {
-                armyShops.add(createArmy(mp, groups));
+                country.getArmyShopsVar().add(createArmy(mp, groups));
                 run++;
             }
         }
@@ -243,22 +236,22 @@ public class EntityGenerator implements CitiesOwner, ArmyShopsOwner {
             }
         }
     }
-
-    @Override
-    public Iterator<City> getCities() {
-        ArrayList<Iterator<City>> iterators = new ArrayList<>();
-        for (CitiesOwner city : cities) {
-            iterators.add(city.getCities());
-        }
-        return new EntityIterator<>(iterators);
-    }
-
-    @Override
-    public Iterator<ArmyShop> getArmyShops() {
-        ArrayList<Iterator<ArmyShop>> iterators = new ArrayList<>();
-        for (ArmyShopsOwner armyShop : armyShops) {
-            iterators.add(armyShop.getArmyShops());
-        }
-        return new EntityIterator<>(iterators);
-    }
+//
+//    @Override
+//    public Iterator<City> getCities() {
+//        ArrayList<Iterator<City>> iterators = new ArrayList<>();
+//        for (CitiesOwner city : cities) {
+//            iterators.add(city.getCities());
+//        }
+//        return new EntityIterator<>(iterators);
+//    }
+//
+//    @Override
+//    public Iterator<ArmyShop> getArmyShops() {
+//        ArrayList<Iterator<ArmyShop>> iterators = new ArrayList<>();
+//        for (ArmyShopsOwner armyShop : armyShops) {
+//            iterators.add(armyShop.getArmyShops());
+//        }
+//        return new EntityIterator<>(iterators);
+//    }
 }

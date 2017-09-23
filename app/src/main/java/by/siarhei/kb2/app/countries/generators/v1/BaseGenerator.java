@@ -101,4 +101,32 @@ public class BaseGenerator {
             }
         }
     }
+
+    public void sand() {
+        for (int i = 6; i < 59; i++) {
+            for (int j = 6; j < 11; j++) {
+                map[i][j].setLand(R.drawable.sand);
+                map[j][i].setLand(R.drawable.sand);
+            }
+        }
+        for (int i = 6; i < 59; i++) {
+            for (int j = 54; j < 59; j++) {
+                map[j][i].setLand(R.drawable.sand);
+                map[i][j].setLand(R.drawable.sand);
+            }
+        }
+    }
+
+    public void stones(double frequency) {
+        for (int i = 11; i < Country.MAX_MAP_SIZE - 11; i++) {
+            for (int j = 11; j < Country.MAX_MAP_SIZE - 11; j++) {
+                if (Math.random() < frequency) {
+                    if ((map[i][j].getLand() == R.drawable.land) &&
+                            (map[i][j].getEntity() == null)) {
+                        map[i][j].setLand(R.drawable.stone);
+                    }
+                }
+            }
+        }
+    }
 }

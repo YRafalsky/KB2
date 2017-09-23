@@ -2,22 +2,17 @@ package by.siarhei.kb2.app.countries.v1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 import by.siarhei.kb2.app.R;
-import by.siarhei.kb2.app.countries.generators.BaseGenerator;
-import by.siarhei.kb2.app.countries.generators.EntityGenerator;
 import by.siarhei.kb2.app.entities.ArmyShop;
 import by.siarhei.kb2.app.entities.Castle;
-import by.siarhei.kb2.app.entities.CastlesOwner;
 import by.siarhei.kb2.app.entities.City;
 import by.siarhei.kb2.app.entities.Entity;
 import by.siarhei.kb2.app.entities.Metro;
 import by.siarhei.kb2.app.models.Glade;
 import by.siarhei.kb2.app.models.MapPoint;
-import by.siarhei.kb2.app.models.iterators.ArmyShopsOwner;
-import by.siarhei.kb2.app.models.iterators.CitiesOwner;
+
 
 public class Country implements Glade, Serializable {
     public final static int MAX_MAP_SIZE = 65;

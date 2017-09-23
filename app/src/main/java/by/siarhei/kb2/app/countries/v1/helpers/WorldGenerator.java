@@ -2,8 +2,6 @@ package by.siarhei.kb2.app.countries.v1.helpers;
 
 import by.siarhei.kb2.app.countries.generators.v1.EntityGenerator;
 import by.siarhei.kb2.app.countries.v1.Country;
-import by.siarhei.kb2.app.countries.v1.Country5;
-import by.siarhei.kb2.app.countries.v1.CountryTest;
 import by.siarhei.kb2.app.countries.v1.World;
 import by.siarhei.kb2.app.models.v1.helpers.Consts;
 
@@ -31,11 +29,11 @@ public class WorldGenerator {
 
     private static Country[] testWorld() {
         Country[] country = new Country[5];
-        country[0] = new CountryTest();
+        country[0] = CountryGenerator.CreateCountryTest();
         country[1] = CountryGenerator.CreateCountry2(true);
         country[2] = CountryGenerator.CreateCountry3(true);
         country[3] = CountryGenerator.CreateCountry4(true);
-        country[4] = new Country5(true);
+        country[4] = CountryGenerator.CreateCountry5(true);
         return country;
     }
 
@@ -45,7 +43,7 @@ public class WorldGenerator {
         country[1] = CountryGenerator.CreateCountry2(true);
         country[2] = CountryGenerator.CreateCountry3(true);
         country[3] = CountryGenerator.CreateCountry4(true);
-        country[4] = new Country5(true);
+        country[4] = CountryGenerator.CreateCountry5(true);
         return country;
     }
 
@@ -55,7 +53,7 @@ public class WorldGenerator {
         country[1] = CountryGenerator.CreateCountry2(false);
         country[2] = CountryGenerator.CreateCountry3(false);
         country[3] = CountryGenerator.CreateCountry4(false);
-        country[4] = new Country5(false);
+        country[4] = CountryGenerator.CreateCountry5(false);
         return country;
     }
 }
